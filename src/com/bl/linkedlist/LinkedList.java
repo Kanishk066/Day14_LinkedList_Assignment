@@ -26,6 +26,15 @@ class LinkedListNode{
                 current.Next = newNode;
         }
     }
+    public void addInfront(int value){
+        LinkedListNode newNode = new LinkedListNode(value);
+        if (head == null) {
+            head = newNode;
+        } else {
+            newNode.Next = head;
+            head = newNode;
+        }
+    }
     public void printList(){
                 LinkedListNode current = head;
                 while (current != null) {
@@ -38,9 +47,9 @@ public class LinkedList {
     public static void main(String[] args) {
         System.out.println("Welcome To the Linked List Problem");
         LinkedList1 list = new LinkedList1();
-        list.add(56);
-        list.add(30);
-        list.add(70);
+        list.addInfront(56);
+        list.addInfront(30);
+        list.addInfront(70);
         list.printList();
     }
 }
