@@ -44,6 +44,14 @@ class LinkedListNode{
               }
           }
       }
+      public int pop() {
+          if (head == null) {
+              return -1; // or throw an exception
+          }
+          int deletedValue = head.value;
+          head = head.Next;
+          return deletedValue;
+      }
           public void printList() {
               LinkedListNode current = head;
               while (current != null) {
@@ -57,8 +65,9 @@ class LinkedListNode{
               System.out.println("Welcome To the Linked List Problem");
               LinkedList1 list = new LinkedList1();
               list.add(56);
+              list.add(30);
               list.add(70);
-              list.insert(30,56);
+              list.pop();
               list.printList();
           }
       }
