@@ -72,6 +72,13 @@ class LinkedListNode{
           current.Next = null;
           return deletedValue;
       }
+      public LinkedListNode search(int key){
+          LinkedListNode current = head;
+          while (current != null && current.value != key){
+              current = current.Next;
+          }
+          return current;
+      }
           public void printList() {
               LinkedListNode current = head;
               while (current != null) {
@@ -87,8 +94,8 @@ class LinkedListNode{
               list.add(56);
               list.add(30);
               list.add(70);
-              list.popLast();
-              list.printList();
+              LinkedListNode node = list.search(30);
+              System.out.println(node.value);
           }
       }
 
