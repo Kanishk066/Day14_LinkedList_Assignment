@@ -52,6 +52,26 @@ class LinkedListNode{
           head = head.Next;
           return deletedValue;
       }
+      public int popLast() {
+          if (head == null) {
+              return -1; // or throw an exception
+          }
+
+          if (head.Next == null) {
+              int deletedValue = head.value;
+              head = null;
+              return deletedValue;
+          }
+
+          LinkedListNode current = head;
+          while (current.Next.Next != null) {
+              current = current.Next;
+          }
+
+          int deletedValue = current.Next.value;
+          current.Next = null;
+          return deletedValue;
+      }
           public void printList() {
               LinkedListNode current = head;
               while (current != null) {
@@ -67,7 +87,7 @@ class LinkedListNode{
               list.add(56);
               list.add(30);
               list.add(70);
-              list.pop();
+              list.popLast();
               list.printList();
           }
       }
