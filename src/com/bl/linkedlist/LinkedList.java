@@ -47,7 +47,32 @@ class LinkedListNode{
                   last = last.Next;
               }
           last.Next = newNode;
+      }
+
+      public void deleteNode(int key) {
+          LinkedListNode temp = head, prev = null;
+          if (temp != null && temp.value == key) {
+              head = temp.Next;
+              return;
           }
+          while (temp != null && temp.value != key) {
+              prev = temp;
+              temp = temp.Next;
+          }
+          if (temp == null) {
+              return;
+          }
+          prev.Next = temp.Next;
+      }
+      public int size(){
+          LinkedListNode currNode = head;
+          int count = 0;
+          while(currNode != null) {
+              count++;
+              currNode = currNode.Next;
+          }
+          return count;
+      }
       public void printList() {
               LinkedListNode current = head;
               while (current != null) {
@@ -62,15 +87,17 @@ class LinkedListNode{
               LinkedList1 list = new LinkedList1();
               list.insert(56);
               list.insert(30);
+              list.insert(40);
               list.insert(70);
               System.out.println("Original");
               list.printList();
 
-              LinkedListNode prevNode = list.head.Next;
-              int newValue = 40;
-              list.insertAfter(prevNode, newValue);
-              System.out.println("\nAfter Inserting 40 after 30");
+              int key = 40;
+              list.deleteNode(key);
+              System.out.println("\nAfter Deleting Node with data 40");
               list.printList();
+
+              System.out.println("\nSize of LinkedList: " + list.size());
           }
       }
 
